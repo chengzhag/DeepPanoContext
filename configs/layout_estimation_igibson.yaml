@@ -1,0 +1,58 @@
+method: Pano3D
+resume: False
+finetune: True
+weight: [
+  '/home/zhangcheng/projects/pano_3d_understanding/third_party/HorizonNet/ckpt/resnet50_rnn__st3d.pth'
+]
+seed: 123
+device:
+  use_gpu: True
+  gpu_ids: '0'
+  num_workers: 8
+data:
+  split: data/igibson
+loss_weights:
+  bon_loss: 1.0
+  cor_loss: 1.0
+  pitch_cls_loss: 1.0
+  pitch_reg_loss: 10.0
+  roll_cls_loss: 1.0
+  roll_reg_loss: 10.0
+  lo_ori_cls_loss: 1.0
+  lo_ori_reg_loss: 10.0
+  lo_centroid_loss: 10.0
+  lo_size_loss: 10.0
+  lo_corner_loss: 10.0
+model:
+  layout_estimation:
+    module: HorizonNet
+    loss: HorizonLoss
+    backbone: resnet50
+    use_rnn: True
+optimizer:
+  type: Adam
+  lr: 1e-4
+  betas: [0.9, 0.999]
+  eps: 1e-08
+  weight_decay: 0.0
+scheduler:
+  type: ReduceLROnPlateau
+  patience: 10
+  factor: 0.5
+  threshold: 0.01
+train:
+  epochs: 50
+  freeze: []
+  batch_size: 6
+val:
+  batch_size: 6
+test:
+  batch_size: 6
+log:
+  vis_step: 10
+  print_step: 20
+  path: out/layout_estimation
+
+
+
+

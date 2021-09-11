@@ -1,0 +1,65 @@
+method: LIENLDIF
+resume: False
+finetune: True
+weight: [
+  'out/total3d/20110611514267/model_best.pth'
+]
+seed: 123
+device:
+  use_gpu: True
+  gpu_ids: '0'
+  num_workers: 8
+data:
+  split: data/igibson_obj
+  near_surface_samples: 1024
+  uniform_samples: 1024
+loss_weights:
+  uniform_sample_loss: 1.0
+  near_surface_sample_loss: 0.1
+  fixed_bounding_box_loss: 10.0
+  lowres_grid_inside_loss: 0.2
+model:
+  shape_encoder:
+    module: LIEN
+    bottleneck_size: 1536
+    shape_code_length: 1344
+  shape_decoder:
+    module: LDIF
+    loss: LDIFLoss
+    element_count: 32
+    sym_element_count: 16
+    implicit_parameter_length: 32
+    sym_face: yz
+    cuda_kernel: False
+    bounding_box: 0.7
+    num_samples: 10000
+    coarse_grid_spacing: 0.04375
+    marching_cube_resolution: 64
+optimizer:
+  type: Adam
+  lr: 2e-4
+  betas: [0.9, 0.999]
+  eps: 1e-08
+  weight_decay: 0.0
+scheduler:
+  type: ReduceLROnPlateau
+  patience: 20
+  factor: 0.5
+  threshold: 0.002
+train:
+  epochs: 100
+  freeze: []
+  batch_size: 24
+val:
+  batch_size: 12
+test:
+  batch_size: 1
+log:
+  vis_step: 10
+  print_step: 50
+  path: out/ldif
+  save_checkpoint: True
+
+
+
+

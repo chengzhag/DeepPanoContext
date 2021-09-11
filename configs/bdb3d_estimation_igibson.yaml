@@ -1,0 +1,59 @@
+method: Pano3D
+resume: False
+finetune: True
+weight: [
+  'out/total3d/20110611514267/model_best.pth'
+]
+seed: 123
+device:
+  use_gpu: True
+  gpu_ids: '0'
+  num_workers: 8
+data:
+  split: data/igibson_stage1
+  expand_dis: 0.1
+  g_feature_length: 64
+  fov_split: 0
+  offset_bdb2d: False
+loss_weights:
+  size_reg_loss: 10.0
+  ori_cls_loss: 1.0
+  ori_reg_loss: 10.0
+  dis_cls_loss: 1.0
+  dis_reg_loss: 10.0
+  delta2d_loss: 1.0
+  corner_loss: 50.0
+  bdb2D_loss: 50.0
+  phy_loss: 5.0
+model:
+  bdb3d_estimation:
+    module: Bdb3DNet
+    loss: Bdb3DLoss
+    d_k: 64
+    Nr: 16
+optimizer:
+  type: Adam
+  lr: 1e-4
+  betas: [0.9, 0.999]
+  eps: 1e-08
+  weight_decay: 1e-04
+scheduler:
+  type: ReduceLROnPlateau
+  patience: 20
+  factor: 0.5
+  threshold: 0.01
+train:
+  epochs: 15
+  freeze: []
+  batch_size: 6
+val:
+  batch_size: 6
+test:
+  batch_size: 6
+log:
+  vis_step: 10
+  print_step: 10
+  path: out/bdb3d_estimation
+  save_checkpoint: True
+
+

@@ -1,0 +1,170 @@
+method: Pano3D
+resume: False
+finetune: True
+weight: [
+  'out/bdb3d_estimation/21071216554474/model_best.pth',
+  'out/ldif/21022210091327/model_best.pth'
+]
+seed: 123
+device:
+  use_gpu: True
+  gpu_ids: '0'
+  num_workers: 4
+data:
+  split: data/igibson_stage1
+  expand_dis: 0.1
+  igibson_obj_dataset: data/igibson_obj
+  g_feature_length: 64
+  height: 512
+  width: 1024
+  fov_split: 0
+  offset_bdb2d: False
+loss_weights:
+  size_reg_loss: 10.0
+  ori_cls_loss: 1.0
+  ori_reg_loss: 10.0
+  dis_cls_loss: 1.0
+  dis_reg_loss: 10.0
+  delta2d_loss: 1.0
+  corner_loss: 50.0
+  bdb2D_loss: 50.0
+  phy_loss: 5.0
+  floor_tch_loss: 10.0
+  ceil_tch_loss: 10.0
+  in_room_loss: 10.0
+  obj_obj_rot_loss: 10.0
+  obj_obj_dis_loss: 10.0
+  obj_obj_tch_loss: 10.0
+  obj_wall_rot_loss: 10.0
+  obj_wall_tch_loss: 10.0
+  label_loss: 10.0
+  center_loss: 10.0
+  dis_loss: 10.0
+  ori_loss: 10.0
+  size_loss: 10.0
+model:
+  bdb3d_estimation:
+    module: Bdb3DNet
+    loss: JointLoss
+    d_k: 64
+    Nr: 16
+  shape_encoder:
+    module: LIEN
+    bottleneck_size: 1536
+    shape_code_length: 1344
+  shape_decoder:
+    module: LDIF
+    element_count: 32
+    sym_element_count: 16
+    implicit_parameter_length: 32
+    sym_face: yz
+    cuda_kernel: False
+    bounding_box: 0.7
+    num_samples: 5000
+    coarse_grid_spacing: 0.04375
+    marching_cube_resolution: 64
+  scene_gcn:
+    module: RelationSGCN
+    loss: RelationLoss
+    feature_dim: 512
+    update_groups: 1
+    update_steps: 4
+    res_output: True
+    output_bdb3d: True
+    output_relation: True
+    output_label: False
+    relation_adjust: False
+    visualize_adjust: False
+    score_weighted: True
+    score_thres:
+      size: 0.5
+      dis: 0.5
+      ori: 0.5
+      obj_obj_tch: 0.07
+      obj_wall_tch: 0.18
+      obj_floor_tch: 0.1
+      obj_ceil_tch: 0.007
+      obj_in_room: 0.95
+      obj_obj_rot: 0.5
+      obj_wall_rot: 0.5
+      obj_obj_dis: 0.5
+    optimize_steps: 100
+    optimize_lr: 1.
+    optimize_momentum: 0.9
+    toleration_dis: 0.0
+    loss_weights:
+      center: 0.0001
+      size: 1.0
+      dis: 0.01
+      ori: 0.001
+      obj_obj_col: 0.1
+      obj_wall_col: 1.0
+      obj_floor_col: 1.0
+      obj_ceil_col: 1.0
+      obj_obj_tch: 0.1
+      obj_wall_tch: 1.0
+      obj_floor_tch: 1.0
+      obj_ceil_tch: 1.0
+      obj_obj_rot: 0.01
+      obj_wall_rot: 0.1
+      obj_obj_dis: 0.01
+      bdb3d_proj: 10.0
+    lo_features: [
+      'walls.bdb3d.centroid',
+      'walls.bdb3d.size',
+      'walls.bdb3d.center',
+      'walls.bdb3d.dis',
+      'walls.bdb3d.ori',
+      'walls.bfov.lon',
+      'walls.bfov.lat',
+      'walls.bfov.x_fov',
+      'walls.bfov.y_fov'
+    ]
+    obj_features: [
+      'objs.cls_code',
+      'objs.bdb3d.size_reg',
+      'objs.bdb3d.ori_reg', 'objs.bdb3d.ori_cls',
+      'objs.bdb3d.dis_reg', 'objs.bdb3d.dis_cls',
+      'objs.delta2d',
+      'objs.bdb3d',
+      'objs.ben_arfeature',
+      'objs.ldif_blob_center',
+      'objs.ldif_analytic_code',
+      'objs.layout_dis',
+      'objs.ceil_dis',
+      'objs.floor_dis',
+      'objs.bfov.lon',
+      'objs.bfov.lat',
+      'objs.bfov.x_fov',
+      'objs.bfov.y_fov'
+    ]
+    rel_features: ['bdb2d', 'g_feature', 'bdb3d_test', 'rel_rot']
+optimizer:
+  type: Adam
+  lr: 1e-4
+  betas: [0.9, 0.999]
+  eps: 1e-08
+  weight_decay: 1e-04
+scheduler:
+  type: ReduceLROnPlateau
+  patience: 20
+  factor: 0.5
+  threshold: 0.01
+train:
+  epochs: 35
+  freeze: ['bdb3d_estimation', 'shape_encoder', 'shape_decoder']
+  batch_size: 16
+val:
+  batch_size: 16
+test:
+  batch_size: 1
+log:
+  vis_step: 10
+  print_step: 10
+  save_mesh: False
+  path: out/relation_scene_gcn
+  save_checkpoint: True
+
+
+
+

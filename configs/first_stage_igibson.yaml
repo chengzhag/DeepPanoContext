@@ -1,0 +1,59 @@
+method: Pano3D
+resume: False
+finetune: True
+weight: [
+  'out/layout_estimation/21022217101943/model_best.pth'
+]
+seed: 123
+device:
+  use_gpu: True
+  gpu_ids: '0'
+  num_workers: 8
+data:
+  split: data/igibson
+  expand_dis: 0.1
+  g_feature_length: 64
+model:
+  detector:
+    module: Detector2D
+    config: 'COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml'
+    weight: 'out/detector/detector_mask_rcnn/model_final.pth'
+    score_thresh: 0.5
+    min_iou: 0.25
+    real: False
+    pano: False
+    cf_thresh: 0.3
+    nms_thresh: 0.2
+    nms_all_thresh: 0.4
+  layout_estimation:
+    module: HorizonNet
+    loss: HorizonLoss
+    backbone: resnet50
+    use_rnn: True
+optimizer:
+  type: Adam
+  lr: 1e-4
+  betas: [0.9, 0.999]
+  eps: 1e-08
+  weight_decay: 0.0
+scheduler:
+  type: ReduceLROnPlateau
+  patience: 10
+  factor: 0.5
+  threshold: 0.01
+train:
+  epochs: 50
+  freeze: []
+  batch_size: 2
+val:
+  batch_size: 2
+test:
+  batch_size: 2
+log:
+  vis_step: 0
+  print_step: 20
+  path: out/first_stage
+  save_as_dataset: 'data/igibson_stage1'
+
+
+
