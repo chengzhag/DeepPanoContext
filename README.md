@@ -101,23 +101,18 @@ This might be helpful when debugging or tuning hyper-parameters.
  
 #### 2D Detector
 
-1. (Optional) Visualize 2D detection ground-truth with:
-    ```shell
-    python models/detector/dataset.py
-    ```
-
-2. Train 2D detector (Mask RCNN) with:
+1. Train 2D detector (Mask RCNN) with:
     ```shell
     CUDA_VISIBLE_DEVICES=0 python train_detector.py
     ```
    The trained weights will be saved to ```out/detector/detector_mask_rcnn```
       
-3. (Optional) When training 2D detector, you could visualize the training process with:
+2. (Optional) When training 2D detector, you could visualize the training process with:
     ```shell
     tensorboard --logdir out/detector/detector_mask_rcnn --bind_all --port 6006
     ```
 
-4. (Optional) Evaluate with:
+3. (Optional) Evaluate with:
     ```shell
     CUDA_VISIBLE_DEVICES=0 python test_detector.py
     ```
@@ -128,7 +123,7 @@ This might be helpful when debugging or tuning hyper-parameters.
     ```
    The visualization will be saved to the folder where the model weights file is.
    
-5. Visualize BFoV detection results:
+4. Visualize BFoV detection results:
     ```shell
     CUDA_VISIBLE_DEVICES=0 python configs/detector_2d_igibson.yaml --mode qtest --log.vis_step 1
     ```
