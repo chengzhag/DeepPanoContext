@@ -20,9 +20,10 @@ conda activate Pano3D
 python -m pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu101/torch1.7/index.html
 python project.py build
 ```
-When running ```python project.py build```, the script will run ```external/build_gaps.sh``` which requires password for sudo privilege for ```apt-get install```.
+- When running ```python project.py build```, the script will run ```external/build_gaps.sh``` which requires password for sudo privilege for ```apt-get install```.
 Please make sure you are running with a user with sudo privilege.
 If not, please reach your administrator for installation of [these libraries](https://github.com/chengzhag/Implicit3DUnderstanding/blob/af2964f074d941cd990cff81a9b5f75489586ed2/external/build_gaps.sh#L37) and comment out the corresponding lines then run ```python project.py build```.
+- If you encounter ```/usr/bin/ld: cannot find -lGL``` problem when building GAPS, please follow [this issue](https://github.com/chengzhag/Implicit3DUnderstanding/issues/10#issuecomment-876727536).
 
 Since the dataloader loads large number of variables,
 before training, please follow [this](https://stackoverflow.com/questions/39537731/errno-24-too-many-open-files-but-i-am-not-opening-files) to raise the open file descriptor limits of your system.
