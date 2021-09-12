@@ -3,8 +3,8 @@
 ### DeepPanoContext: Panoramic 3D Scene Understanding with Holistic Scene Context Graph and Relation-based Optimization
 Cheng Zhang, Zhaopeng Cui, Cai Chen, Shuaicheng Liu, Bing Zeng, Hujun Bao, Yinda Zhang
 
-![teaser](figures/teaser.png)
-![pipeline](figures/pipeline_anim.gif)
+![teaser](images/teaser.png)
+![pipeline](images/pipeline_anim.gif)
 
 ## Introduction
 

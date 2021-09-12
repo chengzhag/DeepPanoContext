@@ -130,7 +130,7 @@ class IGVisualizer:
         obj_paths = glob(os.path.join(self._temp_folder, '*', '*.obj'))
         settings = MeshRendererSettings(
             env_texture_filename=hdr_texture,
-            env_texture_filename2=hdr_texture2,
+            env_texture_filename2=hdr_texture,
             env_texture_filename3=background_path,
             msaa=True, enable_shadow=False, enable_pbr=True
         )
