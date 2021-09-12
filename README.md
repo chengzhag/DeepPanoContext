@@ -67,9 +67,7 @@ Here, we follow their [Installation](http://svl.stanford.edu/igibson/docs/instal
 
 1. Download iGibson dataset with:
     ```shell
-    python -m gibson2.utils.assets_utils --download_assets
     python -m gibson2.utils.assets_utils --download_ig_dataset
-    python -m gibson2.utils.assets_utils --download_ext_scene_assets
     ```
 
 2. Render panorama with:
