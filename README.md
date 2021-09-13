@@ -197,3 +197,74 @@ CUDA_VISIBLE_DEVICES=0 python main.py configs/relation_scene_gcn_igibson.yaml --
 ```
 
 The visualization results will be saved to ```out/relation_scene_gcn/<relation_sgcn_ro_test_id>```.
+
+## Citation
+
+If you find our work and code helpful, please consider cite:
+```
+@misc{zhang2021deeppanocontext,
+      title={DeepPanoContext: Panoramic 3D Scene Understanding with Holistic Scene Context Graph and Relation-based Optimization}, 
+      author={Cheng Zhang and Zhaopeng Cui and Cai Chen and Shuaicheng Liu and Bing Zeng and Hujun Bao and Yinda Zhang},
+      year={2021},
+      eprint={2108.10743},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+
+@InProceedings{Zhang_2021_CVPR,
+    author    = {Zhang, Cheng and Cui, Zhaopeng and Zhang, Yinda and Zeng, Bing and Pollefeys, Marc and Liu, Shuaicheng},
+    title     = {Holistic 3D Scene Understanding From a Single Image With Implicit Representation},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2021},
+    pages     = {8833-8842}
+}
+```
+
+We thank the following great works:
+- [Total3DUnderstanding](https://github.com/yinyunie/Total3DUnderstanding) for their well-structured code. We construct our network based on their well-structured code.
+- [Coop](https://github.com/thusiyuan/cooperative_scene_parsing) for their dataset. We used their processed dataset with 2D detector prediction.
+- [LDIF](https://github.com/google/ldif) for their novel representation method. We ported their LDIF decoder from Tensorflow to PyTorch.
+- [Graph R-CNN](https://github.com/jwyang/graph-rcnn.pytorch/blob/master/README.md) for their scene graph design. We adopted their GCN implemention to construct our SGCN.
+- [Occupancy Networks](https://github.com/autonomousvision/occupancy_networks) for their modified version of [mesh-fusion](https://github.com/davidstutz/mesh-fusion) pipeline.
+
+If you find them helpful, please cite:
+```
+@InProceedings{Nie_2020_CVPR,
+author = {Nie, Yinyu and Han, Xiaoguang and Guo, Shihui and Zheng, Yujian and Chang, Jian and Zhang, Jian Jun},
+title = {Total3DUnderstanding: Joint Layout, Object Pose and Mesh Reconstruction for Indoor Scenes From a Single Image},
+booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+month = {June},
+year = {2020}
+}
+@inproceedings{huang2018cooperative,
+  title={Cooperative Holistic Scene Understanding: Unifying 3D Object, Layout, and Camera Pose Estimation},
+  author={Huang, Siyuan and Qi, Siyuan and Xiao, Yinxue and Zhu, Yixin and Wu, Ying Nian and Zhu, Song-Chun},
+  booktitle={Advances in Neural Information Processing Systems},
+  pages={206--217},
+  year={2018}
+}	
+@inproceedings{genova2020local,
+    title={Local Deep Implicit Functions for 3D Shape},
+    author={Genova, Kyle and Cole, Forrester and Sud, Avneesh and Sarna, Aaron and Funkhouser, Thomas},
+    booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+    pages={4857--4866},
+    year={2020}
+}
+@inproceedings{yang2018graph,
+    title={Graph r-cnn for scene graph generation},
+    author={Yang, Jianwei and Lu, Jiasen and Lee, Stefan and Batra, Dhruv and Parikh, Devi},
+    booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},
+    pages={670--685},
+    year={2018}
+}
+@inproceedings{mescheder2019occupancy,
+  title={Occupancy networks: Learning 3d reconstruction in function space},
+  author={Mescheder, Lars and Oechsle, Michael and Niemeyer, Michael and Nowozin, Sebastian and Geiger, Andreas},
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  pages={4460--4470},
+  year={2019}
+}
+```
+
+
