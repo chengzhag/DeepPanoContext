@@ -91,6 +91,8 @@ Here, we follow their [Installation](http://svl.stanford.edu/igibson/docs/instal
 
 ## Training and Testing
 
+Hint: The <XXX_id> in the commands bellow needs to be replaced with the XXX_id trained in the previous steps.
+
 Hint: In the steps bellow, when training or testing with main.py, you can override yaml configurations with command line parameter:
 ```shell
 CUDA_VISIBLE_DEVICES=0 python main.py configs/layout_estimation_igibson.yaml --train.epochs 100
