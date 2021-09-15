@@ -123,9 +123,9 @@ This might be helpful when debugging or tuning hyper-parameters.
     ```
    The visualization will be saved to the folder where the model weights file is.
    
-4. Visualize BFoV detection results:
+4. (Optional) Visualize BFoV detection results:
     ```shell
-    CUDA_VISIBLE_DEVICES=0 python configs/detector_2d_igibson.yaml --mode qtest --log.vis_step 1
+    CUDA_VISIBLE_DEVICES=0 python main.py configs/detector_2d_igibson.yaml --mode qtest --log.vis_step 1
     ```
    The visualization will be saved to ```out/detector/<detector_test_id>```
 
