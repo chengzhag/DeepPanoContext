@@ -91,12 +91,16 @@ Here, we follow their [Installation](http://svl.stanford.edu/igibson/docs/instal
 
 ## Training and Testing
 
-### Hint
-1. The <XXX_id> in the commands bellow needs to be replaced with the XXX_id trained in the previous steps.
+### Preparation
+
+1. We use the pretrained weights of [Implicit3DUnderstanding](https://github.com/chengzhag/Implicit3DUnderstanding) for fine-tuning Bdb3d Estimation Network (BEN) and LIEN+LDIF. Please download the [pretrained checkpoint](https://stduestceducn-my.sharepoint.com/:u:/g/personal/2015010912010_std_uestc_edu_cn/Efs2Tqlkk_pIhy16ud20m5sBMkbkWJEuspiLjdF4G2jOzA?e=sxnswk)
+and unzip it into ```out/total3d/20110611514267/```.
 
 2. We use [wandb](https://wandb.ai/) for logging and visualizing experiments. You can follow their [quickstart guide](https://docs.wandb.ai/quickstart) to sign up for a free account and login on your machine with ```wandb login```. The training and testing results will be uploaded to your project "deeppanocontext".
 
-3. In the steps bellow, when training or testing with main.py, you can override yaml configurations with command line parameter:
+3. Hint: The <XXX_id> in the commands bellow needs to be replaced with the XXX_id trained in the previous steps.
+
+4. Hint: In the steps bellow, when training or testing with main.py, you can override yaml configurations with command line parameter:
     ```shell
     CUDA_VISIBLE_DEVICES=0 python main.py configs/layout_estimation_igibson.yaml --train.epochs 100
     ```
