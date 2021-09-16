@@ -37,7 +37,7 @@ root      soft    nofile      500000
 
 ## Demo
 
-Download the [pretrained checkpoints](https://stduestceducn-my.sharepoint.com/:u:/g/personal/2015010912010_std_uestc_edu_cn/EUbGsq_V5K9Ai7U-MpMBcbsBEgPvl3VtVpsVv1IfJDlY7g?e=M5oz2u) 
+Download the [pretrained checkpoints](https://stduestceducn-my.sharepoint.com/:u:/g/personal/2015010912010_std_uestc_edu_cn/EUbGsq_V5K9Ai7U-MpMBcbsBEgPvl3VtVpsVv1IfJDlY7g?e=YPMQNU) 
 of detector, layout estimation network, and other modules.
 Then unzip the folder ```out``` into the root directory of current project.
 Since the given checkpoints are trained with current version of our code, which is a refactored version, the results are slightly better than those reported in our paper.
