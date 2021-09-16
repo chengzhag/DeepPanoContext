@@ -18,7 +18,7 @@ def run(cfg):
     if cfg.config['sweep']:
         name = None
         id = None
-    wandb.init(project="pano3dunderstanding", config=cfg.config, dir=cfg.config['log']['path'],
+    wandb.init(project="deeppanocontext", config=cfg.config, dir=cfg.config['log']['path'],
                name=name, id=id, resume=resume)
     wandb.summary['pid'] = os.getpid()
     wandb.summary['ppid'] = os.getppid()

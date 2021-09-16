@@ -91,13 +91,16 @@ Here, we follow their [Installation](http://svl.stanford.edu/igibson/docs/instal
 
 ## Training and Testing
 
-Hint: The <XXX_id> in the commands bellow needs to be replaced with the XXX_id trained in the previous steps.
+### Hint
+1. The <XXX_id> in the commands bellow needs to be replaced with the XXX_id trained in the previous steps.
 
-Hint: In the steps bellow, when training or testing with main.py, you can override yaml configurations with command line parameter:
-```shell
-CUDA_VISIBLE_DEVICES=0 python main.py configs/layout_estimation_igibson.yaml --train.epochs 100
-```
-This might be helpful when debugging or tuning hyper-parameters.
+2. We use [wandb](https://wandb.ai/) for logging and visualizing experiments. You can follow their [quickstart guide](https://docs.wandb.ai/quickstart) to sign up for a free account and login on your machine with ```wandb login```. The training and testing results will be uploaded to your project "deeppanocontext".
+
+3. In the steps bellow, when training or testing with main.py, you can override yaml configurations with command line parameter:
+    ```shell
+    CUDA_VISIBLE_DEVICES=0 python main.py configs/layout_estimation_igibson.yaml --train.epochs 100
+    ```
+    This might be helpful when debugging or tuning hyper-parameters.
 
 ### First Stage
  

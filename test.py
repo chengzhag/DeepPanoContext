@@ -13,7 +13,7 @@ def run(cfg):
         name = cfg.config['name']
         id = cfg.config['log']['path'].split('/')[-1]
         config = None if resume else cfg.config
-        wandb.init(project="pano3dunderstanding", config=config, dir=cfg.config['log']['path'],
+        wandb.init(project="deeppanocontext", config=config, dir=cfg.config['log']['path'],
                    name=name, id=id, resume=resume)
 
     '''Begin to run network.'''

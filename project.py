@@ -158,9 +158,9 @@ if __name__ == '__main__':
                         help='list of subworks to do.')
     parser.add_argument('--username', type=str, default='pidan1231239',
                         help='wandb username.')
-    parser.add_argument('--project', type=str, default='pano3dunderstanding',
+    parser.add_argument('--project', type=str, default='deeppanocontext',
                         help='wandb project.')
-    parser.add_argument('--dst', type=str, default='../Pano3DUnderstanding_clone')
+    parser.add_argument('--dst', type=str, default='../DeepPanoContext_clone')
     args = parser.parse_args()
 
     globals()[args.work](args)
