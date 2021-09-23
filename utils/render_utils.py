@@ -8,8 +8,10 @@ import py360convert
 from configs.data_config import IG59CLASSES
 from utils.transform_utils import points2bdb2d, contour2bfov
 
-hdr_texture = os.path.join('images', 'photo_studio_01_2k.hdr')
-hdr_texture2 = hdr_texture
+hdr_texture = os.path.join(
+    gibson2.ig_dataset_path, 'scenes', 'background', 'probe_02.hdr')
+hdr_texture2 = os.path.join(
+    gibson2.ig_dataset_path, 'scenes', 'background', 'probe_03.hdr')
 background_texture = os.path.join(
     gibson2.ig_dataset_path, 'scenes', 'background',
     'urban_street_01.jpg')
