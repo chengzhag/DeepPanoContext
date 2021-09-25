@@ -110,33 +110,7 @@ and unzip it into ```out/total3d/20110611514267/```.
  
 #### 2D Detector
 
-1. Train 2D detector (Mask RCNN) with:
-    ```shell
-    CUDA_VISIBLE_DEVICES=0 python train_detector.py
-    ```
-   The trained weights will be saved to ```out/detector/detector_mask_rcnn```
-      
-2. (Optional) When training 2D detector, you could visualize the training process with:
-    ```shell
-    tensorboard --logdir out/detector/detector_mask_rcnn --bind_all --port 6006
-    ```
-
-3. (Optional) Evaluate with:
-    ```shell
-    CUDA_VISIBLE_DEVICES=0 python test_detector.py
-    ```
-   The results will be saved to ```out/detector/detector_mask_rcnn/evaluation_{train/test}```.
-   Alternatively, you can visualize the prediction results on test set with:
-   ```shell
-    CUDA_VISIBLE_DEVICES=0 python test_detector.py --visualize --split test
-    ```
-   The visualization will be saved to the folder where the model weights file is.
-   
-4. (Optional) Visualize BFoV detection results:
-    ```shell
-    CUDA_VISIBLE_DEVICES=0 python main.py configs/detector_2d_igibson.yaml --mode qtest --log.vis_step 1
-    ```
-   The visualization will be saved to ```out/detector/<detector_test_id>```
+Please follow Demo section to download weights for detector before we release full fine-tuning code for detector.
 
 #### Layout Estimation
 
