@@ -185,13 +185,12 @@ The visualization results will be saved to ```out/relation_scene_gcn/<relation_s
 
 If you find our work and code helpful, please consider cite:
 ```
-@misc{zhang2021deeppanocontext,
-      title={DeepPanoContext: Panoramic 3D Scene Understanding with Holistic Scene Context Graph and Relation-based Optimization}, 
-      author={Cheng Zhang and Zhaopeng Cui and Cai Chen and Shuaicheng Liu and Bing Zeng and Hujun Bao and Yinda Zhang},
-      year={2021},
-      eprint={2108.10743},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@inproceedings{zhang2021deeppanocontext,
+  title={DeepPanoContext: Panoramic 3D Scene Understanding With Holistic Scene Context Graph and Relation-Based Optimization},
+  author={Zhang, Cheng and Cui, Zhaopeng and Chen, Cai and Liu, Shuaicheng and Zeng, Bing and Bao, Hujun and Zhang, Yinda},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={12632--12641},
+  year={2021}
 }
 
 @InProceedings{Zhang_2021_CVPR,
