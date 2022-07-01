@@ -17,6 +17,7 @@ Install necessary tools and create conda environment (needs to install anaconda 
 sudo apt install xvfb ninja-build freeglut3-dev libglew-dev meshlab
 conda env create -f environment.yaml
 conda activate Pano3D
+pip install wandb
 python -m pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu101/torch1.7/index.html
 python project.py build
 ```
