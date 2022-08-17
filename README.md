@@ -64,7 +64,10 @@ If nothing goes wrong, you should get the following results:
 ## Data preparation
 
 Our data is rendered with [iGibson](http://svl.stanford.edu/igibson/). 
-Here, we follow their [Installation](http://svl.stanford.edu/igibson/docs/installation.html) guide to download iGibson dataset, then render and preprocess the data with our code.
+
+Deprecated - Here, we follow their [Installation](http://svl.stanford.edu/igibson/docs/installation.html) guide to download iGibson dataset, then render and preprocess the data with our code.
+
+Update - Since iGibson has gone through a major update, their dataset download link has been updated. Please download the dataset [here](https://stduestceducn-my.sharepoint.com/:f:/g/personal/2015010912010_std_uestc_edu_cn/Erw0EZTkRVBFthvy58I-xysBV5Th9D5dSrPUhqH7Ouf7bA?e=cbgKFQ) and follow the README to put the dataset into right places.
 
 1. Download iGibson dataset with:
     ```shell
